@@ -77,6 +77,16 @@ namespace TDD.Tests {
             //assert
             act.ShouldThrow<ArgumentOutOfRangeException>();
         }
+        [TestMethod]
+        public void In_Sets_of_Zero_Should_Be_Zero() {
+            //arrange
+            var target = new GroupSummaryCalculator<SalesList>(_item);
+            var expected = new List<int> { 0 };
+            //act
+            var act = target.CheckSummary(0, x => x.Cost).ToList();
+            //assert
+            act.ShouldBeEquivalentTo(expected);
+        }
     }
     public class SalesList {
         public int id { get; set; }

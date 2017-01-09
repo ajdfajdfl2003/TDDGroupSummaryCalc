@@ -17,7 +17,11 @@ namespace TDD
             if(groupSize < 0) {
                 throw new ArgumentOutOfRangeException("GroupingSize should be greater than or equal to zero.");
             }
-            for(int index = 0; index<_source.Count(); index+=groupSize) {
+            if (groupSize == 0) {
+                yield return _source.Skip(_source.Count()).Sum(column);
+                yield break;
+            }
+            for (int index = 0; index<_source.Count(); index+=groupSize) {
                 yield return _source.Skip(index).Take(groupSize).Sum(column);
             }
         }
