@@ -31,3 +31,4 @@
 - [FluentAssertions - Object graph comparison](https://github.com/dennisdoomen/fluentassertions/wiki#object-graph-comparison)
 - [[Property selector Expression>. How to get/set value to selected property](http://stackoverflow.com/questions/5075484/property-selector-expressionfunct-how-to-get-set-value-to-selected-property)](http://stackoverflow.com/questions/5075484/property-selector-expressionfunct-how-to-get-set-value-to-selected-property)
 - [C# - yeild return 使用方法](http://limitedcode.blogspot.tw/2014/07/c-yeild.html)
+- [Extension Methods (C# Programming Guide)](https://msdn.microsoft.com/en-us/library/bb383977.aspx)
