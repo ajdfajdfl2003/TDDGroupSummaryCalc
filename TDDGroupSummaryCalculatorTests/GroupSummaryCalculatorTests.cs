@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TDD;
 
 namespace TDD.Tests {
     [TestClass()]
@@ -29,10 +30,9 @@ namespace TDD.Tests {
         [TestMethod()]
         public void In_Sets_of_Three_Check_Sum_of_Cost_Should_Be_6_15_24_21() {
             //arrange
-            var target = new GroupSummaryCalculator<SalesList>(_item);
             List<int> expected = new List<int> { 6, 15, 24, 21};
             //act
-            var actual = target.CheckSummary(3, x => x.Cost).ToList();
+            var actual = _item.CheckSummary(3, x => x.Cost).ToList();
             //assert
             actual.Should().Equal(expected);
         }
@@ -40,10 +40,9 @@ namespace TDD.Tests {
         [TestMethod]
         public void In_Sets_of_Four_Check_Sum_of_Revenue_Should_Be_50_66_60() {
             //arrange
-            var target = new GroupSummaryCalculator<SalesList>(_item);
             List<int> expected = new List<int> { 50, 66, 60 };
             //act
-            var actual = target.CheckSummary(4, x => x.Revenue).ToList();
+            var actual = _item.CheckSummary(4, x => x.Revenue).ToList();
             //assert
             actual.Should().Equal(expected);
         }
@@ -51,39 +50,35 @@ namespace TDD.Tests {
         [TestMethod]
         public void In_Sets_of_One_Check_Sum_of_SellPrice_Should_Be_Itself() {
             //arrange
-            var target = new GroupSummaryCalculator<SalesList>(_item);
             var expected = _item.Select(x => x.SellPrice).ToList();
             //act
-            var actual = target.CheckSummary(1, x => x.SellPrice).ToList();
+            var actual = _item.CheckSummary(1, x => x.SellPrice).ToList();
             //assert
             actual.ShouldBeEquivalentTo(expected);
         }
         [TestMethod]
         public void In_Sets_of_Two_Chck_Sum_of_Cost_Should_Be_3_7_11_15_19_11() {
             //arrange
-            var target = new GroupSummaryCalculator<SalesList>(_item);
             var expected = new List<int> { 3, 7, 11, 15, 19, 11 };
             //act
-            var act = target.CheckSummary(2, x => x.Cost).ToList();
+            var act = _item.CheckSummary(2, x => x.Cost).ToList();
             //assert
             act.ShouldBeEquivalentTo(expected);
         }
         [TestMethod]
         public void In_Sets_of_Negative_Should_Throw_Exception() {
             //arrange 
-            var target = new GroupSummaryCalculator<SalesList>(_item);
             //act
-            Action act = () => target.CheckSummary(-1, x => x.Cost).ToList();
+            Action act = () => _item.CheckSummary(-1, x => x.Cost).ToList();
             //assert
             act.ShouldThrow<ArgumentOutOfRangeException>();
         }
         [TestMethod]
         public void In_Sets_of_Zero_Should_Be_Zero() {
             //arrange
-            var target = new GroupSummaryCalculator<SalesList>(_item);
             var expected = new List<int> { 0 };
             //act
-            var act = target.CheckSummary(0, x => x.Cost).ToList();
+            var act = _item.CheckSummary(0, x => x.Cost).ToList();
             //assert
             act.ShouldBeEquivalentTo(expected);
         }
