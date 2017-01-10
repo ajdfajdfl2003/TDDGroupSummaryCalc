@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace TDD
 {
-    public class  GroupSummaryCalculator<T>
+    public static class GroupSummaryCalculator
     {
-        private IEnumerable<T> _source;
-
-        public GroupSummaryCalculator(IEnumerable<T> source) {
-            this._source = source;
-        }
-        public IEnumerable<int> CheckSummary(int groupSize, Func<T,int> column) {
+        public static IEnumerable<int> CheckSummary<T>(this IEnumerable<T> _source, int groupSize, Func<T,int> column) {
             if(groupSize < 0) {
                 throw new ArgumentOutOfRangeException("GroupingSize should be greater than or equal to zero.");
             }
